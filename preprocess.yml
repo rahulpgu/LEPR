@@ -1,0 +1,18 @@
+---
+- name: Preprocess input data
+  hosts: localhost
+  gather_facts: no
+  vars:
+    ansible_python_interpreter: "/usr/bin/env python"
+    dir: /home/ansible/REPOS/LEPR
+    dir: /home/ansible/mi_entorno_virtual/REPOS/LEPR
+  tasks:
+    - name: Change the working directory to somedir/ before executing the command
+      shell: "./preprocess.sh"
+      args:
+         chdir: "{{ dir }}"
+      register: out
+
+    - debug: var=out
+
+# ansible-playbook preprocess.yml -i ./hosts.yml

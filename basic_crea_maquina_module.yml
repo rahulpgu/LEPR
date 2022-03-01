@@ -5,7 +5,7 @@
   vars:
     ansible_python_interpreter: "/usr/bin/env python"
   tasks:
-     - name: Create a virtual machine on given ESXi hostname
+    - name: Create a virtual machine on given ESXi hostname
       community.vmware.vmware_guest:
         hostname: "{{ vcenter_hostname }}"
         username: "{{ vcenter_username }}"
