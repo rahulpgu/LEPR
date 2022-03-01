@@ -3,7 +3,9 @@
   hosts: denvansible01
   gather_facts: no
   vars:
-    ansible_python_interpreter: "/usr/bin/env python"
+#    ansible_python_interpreter: "/usr/bin/env python"
+#    ansible_connection: local
+     ansible_python_interpreter: "/home/ansible/venv/bin/python"
   tasks:
      - name: Create a virtual machine on given ESXi hostname
        community.vmware.vmware_guest:
