@@ -1,0 +1,45 @@
+---
+- name: Example showing VMware module creating vm
+  hosts: localhost
+  gather_facts: no
+ # vars_files:
+ #   - vcenter_vars.yml
+  tasks:
+    - name: Create a virtual machine on given ESXi hostname
+      community.vmware.vmware_guest:
+        hostname: "{{ vcenter_hostname }}"
+        username: "{{ vcenter_username }}"
+        password: "{{ vcenter_password }}"
+        name: test_vm_0002
+        state: poweredoff
+        guest_id: centos64Guest
+        esxi_hostname: "{{ esxi_hostname }}"
+        disk:
+        - size_gb: 10
+          type: thin
+          datastore: VM_TEST_INFRA
+        hardware:
+          memory_mb: 512
+          num_cpus: 2
+          scsi: paravirtual
+        networks:
+        - name: VM Network
+          ip: 10.1.43.146
+          netmask: 255.255.255.0
+          device_type: vmxnet3
+        wait_for_ip_address: false
+        wait_for_ip_address_timeout: 600
+      delegate_to: localhost
+      register: deploy_vm
+
+
+
+
+  #    folder: /DC1/vm/
+  # This is hostname of particular ESXi server on which user wants VM to be deployed
+ #          mac: aa:bb:dd:aa:00:14
+
+    - debug: var=deploy_vm
+
+
+# ansible-playbook basic_crea_maquina_module.yml -i ./hosts.yml
