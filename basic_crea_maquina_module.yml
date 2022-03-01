@@ -1,6 +1,6 @@
 ---
 - name: Example showing VMware module creating vm
-  hosts: localhost
+  hosts: denvansible01
   gather_facts: no
   vars:
     ansible_python_interpreter: "/usr/bin/env python"
