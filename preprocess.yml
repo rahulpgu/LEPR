@@ -6,9 +6,9 @@
     ansible_python_interpreter: "/usr/bin/env python"
   tasks:
     - name: Change the working directory to somedir/ before executing the command
-      shell: pwd
+      shell: "{{ preprocess_cmd }}"
       args:
-         chdir: "{{ dir_sh }}"
+         chdir: "{{ preprocess_dir }}"
       register: out
 
     - debug: var=out
