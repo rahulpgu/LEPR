@@ -29,6 +29,7 @@
           scsi: paravirtual
        register: deploy_vm
 
+     - debug: var=input
 
 # ansible-playbook basic_crea_maquina_module.yml -i ./hosts.yml
 

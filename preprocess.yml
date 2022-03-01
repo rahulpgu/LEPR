@@ -13,4 +13,7 @@
 
     - debug: var=out
 
+    - debug: var=input
+
+
 # ansible-playbook preprocess.yml -i ./hosts.yml
