@@ -5,8 +5,8 @@
   vars:
     ansible_python_interpreter: "/usr/bin/env python"
   tasks:
-    - name: Create a virtual machine on given ESXi hostname
-      community.vmware.vmware_guest:
+     - name: Create a virtual machine on given ESXi hostname
+       community.vmware.vmware_guest:
         hostname: "{{ vcenter_hostname }}"
         username: "{{ vcenter_username }}"
         password: "{{ vcenter_password }}"
@@ -14,7 +14,7 @@
         folder: /TEST/vm
         datacenter: TEST
         name: test_vm_0002
-        state: absent
+        state: poweredoff 
         guest_id: centos64Guest
         cluster: "{{ cluster }}"
         disk:
@@ -25,7 +25,8 @@
           memory_mb: 512
           num_cpus: 2
           scsi: paravirtual
-      register: deploy_vm
+       register: deploy_vm
 
 
 # ansible-playbook basic_crea_maquina_module.yml -i ./hosts.yml
+
