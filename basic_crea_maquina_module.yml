@@ -13,18 +13,18 @@
         username: "{{ vcenter_username }}"
         password: "{{ vcenter_password }}"
         validate_certs: false
-        folder: /TEST/vm
+        folder: "{{ input.folder }}"
         datacenter: TEST
-        name: test_vm_0002
-        state: poweredoff 
-        guest_id: centos64Guest
+        name: "{{ input.name }}"
+        state: poweredoff
+        guest_id: "{{ input.guest_id }}"
         cluster: "{{ cluster }}"
         disk:
-        - size_gb: 10
+        - size_gb: "{{ input.disk.size_gb }}"
           type: thin
           datastore: VM_INFRA_TEST
         hardware:
-          memory_mb: 512
+          memory_mb: "{{ input.hardware.memory_mb }}"
           num_cpus: 2
           scsi: paravirtual
        register: deploy_vm
@@ -32,6 +32,8 @@
      - debug: var=input
 
      - debug: var=statdata
+
+     - debug: var=deploy_vm
 
 # ansible-playbook basic_crea_maquina_module.yml -i ./hosts.yml
 

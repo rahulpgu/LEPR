@@ -5,6 +5,12 @@
   vars:
     ansible_python_interpreter: "/usr/bin/env python"
   tasks:
+    - name: 'Fail when a mandatory extra vars are not defined'
+      fail:
+         msg: '{{ ansible_play_name }}: - required variables not defined'
+      when:
+          in.folder is not defined or in.name is not defined or in.disk.size_gb is not defined or in.hardware.memory_mb is not defined
+
     - name: Change the working directory to somedir/ before executing the command
       shell: "{{ preprocess_cmd }}"
       args:
@@ -17,5 +23,9 @@
     - name: "Artifact URL of test results to Tower Workflows"
       set_stats:
         data:
-          statdata:  "Prueba intra workflows"
+          input:  "{{ in }} "
+
+
+    - debug: var=input
+
 # ansible-playbook preprocess.yml -i ./hosts.yml
