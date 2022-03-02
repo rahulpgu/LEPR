@@ -25,7 +25,7 @@
         data:
           input:  "{{ in }} "
 
-   - name: "Artifact URL of test results to Tower Workflows"
+    - name: "Artifact URL of test results to Tower Workflows"
       set_stats:
         data:
           statdata:  "{{ in }} "
