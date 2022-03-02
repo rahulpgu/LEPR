@@ -7,6 +7,9 @@
 #    ansible_connection: local
      ansible_python_interpreter: "/home/ansible/venv/bin/python"
   tasks:
+
+     - debug: var=input
+
      - name: Create a virtual machine on given ESXi hostname
        community.vmware.vmware_guest:
         hostname: "{{ vcenter_hostname }}"
