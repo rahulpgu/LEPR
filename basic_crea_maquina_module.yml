@@ -31,5 +31,7 @@
 
      - debug: var=input
 
+     - debug: var=statdata
+
 # ansible-playbook basic_crea_maquina_module.yml -i ./hosts.yml
 

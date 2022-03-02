@@ -12,8 +12,10 @@
       register: out
 
     - debug: var=out
-
     - debug: var=input
 
-
+    - name: "Artifact URL of test results to Tower Workflows"
+      set_stats:
+        data:
+          statdata:  "Prueba intra workflows"
 # ansible-playbook preprocess.yml -i ./hosts.yml
