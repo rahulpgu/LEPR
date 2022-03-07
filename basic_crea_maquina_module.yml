@@ -19,7 +19,8 @@
         folder: "{{ input.folder }}"
         datacenter: TEST
         name: "{{ input.name }}"
-        state: absent
+        is_template: true
+        state: poweredoff
         guest_id: "{{ input.guest_id }}"
         cluster: "{{ cluster }}"
         disk:
@@ -30,6 +31,11 @@
           memory_mb: "{{ input.hardware.memory_mb }}"
           num_cpus: 2
           scsi: paravirtual
+        networks:
+          - name: VLAN42
+            ip: 10.1.43.146
+            netmask: 255.255.255.0
+            device_type: vmxnet3
        register: deploy_vm
 
      - debug: var=input
