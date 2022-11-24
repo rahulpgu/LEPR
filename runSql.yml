@@ -1,0 +1,11 @@
+- hosts: DENVETLD01\ETL02
+  gather_facts: false
+  name: Test SQL
+  tasks:
+    - name: Test SQL
+          community.mysql.mysql_query:
+            login_user: svc_IMOC_BI
+                login_password: )A8WRC$YJq0q
+                login_db: ETLFramework
+                query: SELECT * FROM IMOC_SCHEDULE
+          register: testsqlrun
